@@ -18,7 +18,7 @@ const BooksMain = () => {
     );
 
     const handleBookPress = (book: BookType) => {
-        return router.push({ pathname: "/dashboard/Book/BookDetail"});
+        return router.push({ pathname: "/dashboard/Book/BookDetail", params: { bookId: book.id },});
     };
 
     const handleAddBook = () => {
