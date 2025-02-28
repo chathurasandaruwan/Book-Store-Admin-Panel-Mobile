@@ -5,10 +5,12 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {OrderType} from "../../../interface/OrderType";
 import {orders} from "../../../data/orderData";
 import OrderCard from "../../../components/OrderCard";
+import {useRouter} from "expo-router";
 
 
 const OrderMain = () => {
     const [searchQuery, setSearchQuery] = React.useState('');
+    const router = useRouter();
 
     const filteredOrders = orders.filter(order =>
         order.user_id.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -16,7 +18,7 @@ const OrderMain = () => {
     );
 
     const handleOrderPress = (order: OrderType) => {
-
+        router.push({ pathname: "/dashboard/Order/OrderDetail", params: { orderId: order.id }});
     };
 
     return (
