@@ -17,7 +17,7 @@ const BookCard: React.FC<BookCardProps> = ({ book, onPress }) => {
                 <Text style={styles.author}>{book.author}</Text>
                 <View style={styles.infoRow}>
                     <Text style={styles.price}>${book.price.toFixed(2)}</Text>
-                    <Text style={[styles.stock, book.stock < 10 ? styles.lowStock : null]}>
+                    <Text style={[styles.stock, book.stock < 5 ? styles.lowStock : null]}>
                         Stock: {book.stock}
                     </Text>
                 </View>

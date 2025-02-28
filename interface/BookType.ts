@@ -3,10 +3,8 @@ export interface BookType {
     title: string;
     author: string;
     price: number;
-    isbn: string;
     category: string;
     description: string;
     coverImage: string;
     stock: number;
-    publishDate: string;
 }
