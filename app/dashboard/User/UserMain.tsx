@@ -1,10 +1,10 @@
 import {Text, View} from "react-native";
 
-const User = () => {
+const UserMain = () => {
     return (
         <View>
             <Text>User</Text>
         </View>
     );
 };
-export default User;
+export default UserMain;
