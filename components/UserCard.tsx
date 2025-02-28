@@ -11,7 +11,7 @@ interface UserCardProps {
 const UserCard: React.FC<UserCardProps> = ({ user, onPress }) => {
     const getStatusColor = (status: UserType['status']) => {
         switch (status) {
-            case 'active': return '#0066CC';
+            case 'active': return '#34C759';
             case 'inactive': return '#FF3B30';
             default: return '#999';
         }
@@ -20,7 +20,7 @@ const UserCard: React.FC<UserCardProps> = ({ user, onPress }) => {
     return (
         <TouchableOpacity style={styles.card} onPress={onPress}>
             <View style={styles.header}>
-                <Text style={styles.userId}>Order #{user.id}</Text>
+                <Text style={styles.userId}>User #{user.id}</Text>
                 <View style={[styles.statusBadge, { backgroundColor: getStatusColor(user.status) + '20' }]}>
                     <Text style={[styles.statusText, { color: getStatusColor(user.status) }]}>
                         {user.status.charAt(0).toUpperCase() + user.status.slice(1)}
@@ -34,7 +34,7 @@ const UserCard: React.FC<UserCardProps> = ({ user, onPress }) => {
             </View>
 
             <View style={styles.footer}>
-                <Text style={styles.role}>{user.role} item(s)</Text>
+                <Text style={styles.role}>{user.role}</Text>
             </View>
         </TouchableOpacity>
     );
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     },
     role: {
         fontSize: 14,
-        color: '#666',
+        color: '#0066CC',
     },
 });
 

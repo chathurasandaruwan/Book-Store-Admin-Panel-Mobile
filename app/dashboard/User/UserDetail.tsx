@@ -1,7 +1,9 @@
 import {Text} from "react-native";
 
-export const UserDetail = () => {
+const UserDetail = () => {
     return (
         <Text>User detail</Text>
     );
 };
+
+export default UserDetail;
