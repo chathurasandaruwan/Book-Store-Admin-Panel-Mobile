@@ -262,9 +262,6 @@ const styles = StyleSheet.create({
     activeStatusText: {
         color: 'white',
     },
-    cancelButton: {
-        marginTop: 8,
-    },
 });
 
 export default OrderDetail;
