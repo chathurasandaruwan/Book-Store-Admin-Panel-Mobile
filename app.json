@@ -1,5 +1,6 @@
 {
   "expo": {
+    "scheme": "myapp",
     "name": "book-store-mobile-app",
     "slug": "book-store-mobile-app",
     "version": "1.0.0",

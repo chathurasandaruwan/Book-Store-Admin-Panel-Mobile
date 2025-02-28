@@ -2,15 +2,15 @@ import React from 'react';
 import { View, StyleSheet, FlatList, TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from "@expo/vector-icons";
-import { useNavigation } from '@react-navigation/native';
-import BookCard from "../../components/BookCard";
-import Button from "../../components/Button";
-import {books} from "../../data/bookData";
-import {BookType} from "../../interface/BookType";
+import BookCard from "../../../components/BookCard";
+import Button from "../../../components/Button";
+import {books} from "../../../data/bookData";
+import {BookType} from "../../../interface/BookType";
+import {useRouter} from "expo-router";
 
-const Book = () => {
+const BooksMain = () => {
     const [searchQuery, setSearchQuery] = React.useState('');
-    const navigation = useNavigation();
+    const router = useRouter();
 
     const filteredBooks = books.filter(book =>
         book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -18,11 +18,11 @@ const Book = () => {
     );
 
     const handleBookPress = (book: BookType) => {
-
+        return router.push({ pathname: "/dashboard/Book/BookDetail"});
     };
 
     const handleAddBook = () => {
-
+        router.push({ pathname: "/dashboard/Book/AddBook"});
     };
     return (
         <SafeAreaView style={styles.container} edges={['right', 'left']}>
@@ -109,4 +109,4 @@ const styles = StyleSheet.create({
         padding: 16,
     },
 });
-export default Book;
+export default BooksMain;
