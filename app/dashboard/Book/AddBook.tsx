@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ScrollView, TextInput, Alert } from 'react-nati
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import Button from "../../../components/Button";
+import * as ImagePicker from "expo-image-picker";
 
 
 const AddBook = () => {
@@ -15,6 +16,7 @@ const AddBook = () => {
         description: '',
         stock: '',
     });
+    const [image, setImage] = useState('');
     const [loading, setLoading] = useState(false);
 
     const handleChange = (field: string, value: string) => {
@@ -42,7 +44,27 @@ const AddBook = () => {
 
         return true;
     };
+    //image picker
+    const pickImage = async () => {
+        // Permission Request
+        let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (!permissionResult.granted) {
+            alert("Permission to access camera roll is required!");
+            return;
+        }
 
+        // Open Image Picker
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 1,
+        });
+
+        if (!result.canceled) {
+            setImage(result.assets[0].uri); // Image URL set කරන්න
+        }
+    };
     const handleSubmit = () => {
         if (!validateForm()) return;
 
@@ -136,6 +158,12 @@ const AddBook = () => {
                     />
                 </View>
 
+                <View style={styles.container}>
+                    <Text style={styles.label}>Cover Image</Text>
+                    <Button title="Pick an image from gallery" onPress={pickImage} />
+
+                </View>
+
                 <View style={styles.actions}>
                     <Button
                         title="Cancel"
@@ -206,6 +234,12 @@ const styles = StyleSheet.create({
         flex: 1,
         marginHorizontal: 8,
     },
+    image: {
+        width: 200,
+        height: 200,
+        marginTop: 10,
+        borderRadius: 10
+    }
 });
 
 export default AddBook;
