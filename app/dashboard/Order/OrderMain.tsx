@@ -1,10 +1,10 @@
 import {Text, View} from "react-native";
 
-const Order = () => {
+const OrderMain = () => {
     return (
         <View>
             <Text>Order</Text>
         </View>
     );
 };
-export default Order;
+export default OrderMain;
